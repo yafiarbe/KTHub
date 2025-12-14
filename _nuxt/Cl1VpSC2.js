@@ -1,0 +1,1 @@
+import{N as r,f as c,O as s,h as p,o as l,p as m,n as u}from"./DsG1LDHu.js";const i={base:""},_={__name:"ProseEm",props:{class:{type:String,required:!1}},setup(e){const a=e,o=r(),t=c(()=>s({extend:s(i),...o.ui?.prose?.em||{}}));return(n,f)=>(l(),p("em",{class:u(t.value({class:a.class}))},[m(n.$slots,"default")],2))}};export{_ as default};
