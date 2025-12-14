@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--font-sans: "Roboto", sans-serif;
+}
+
+:root {
+	--ui-footer-min-height: 80px; /* или ваша высота футера */
+
+	--ui-bg: white;
+	--ui-bg-muted: var(--ui-color-neutral-50);
+	--ui-bg-elevated: var(--ui-color-neutral-100);
+	--ui-bg-accented: var(--ui-color-neutral-200);
+	--ui-bg-inverted: var(--ui-color-neutral-900);
+}
+
+.dark {
+	--ui-bg: var(--ui-color-zinc-900);
+	--ui-bg-muted: var(--ui-color-neutral-800);
+	--ui-bg-elevated: var(--ui-color-neutral-800);
+	--ui-bg-accented: var(--ui-color-neutral-700);
+	--ui-bg-inverted: white;
+}
+
+/* Паттерн на фоне всего сайта */
+/* body {
+	background-color: var(--ui-bg);
+	background-image: url("/images/paper.png") ;
+	background-repeat: repeat;
+	background-blend-mode: multiply;
+} */
+
+/* Плавный скролл */
+html {
+	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
+}
+
+/* Отступ для якорных ссылок (чтобы заголовок не прилипал к верху) */
+[id] {
+	scroll-margin-top: 80px;
+}
+
+/* Цвет primary для заголовков в prose */
+.prose :where(h1, h2, h3, h4, h5, h6):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+	color: var(--ui-primary);
+}
