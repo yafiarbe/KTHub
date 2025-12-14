@@ -5,17 +5,25 @@ const route = useRoute();
 
 const items = computed<NavigationMenuItem[]>(() => [
 	{
-		label: "Основные правила",
+		label: "Основные правила".toUpperCase(),
 		to: "/core-rules",
 		active: route.path.startsWith("/core-rules"),
 	},
 	{
-		label: "Другие правила",
+		label: "Другие правила".toUpperCase(),
 		to: "/other-rules",
 		active: route.path.startsWith("/other-rules"),
 	},
 	{
-		label: "Блог",
+		label: "Инструменты".toUpperCase(),
+		active: route.path.startsWith("/tools"),
+		children: [
+			{ label: "Ростеры".toUpperCase(), to: "/tools/rosters" },
+			{ label: "Трекер".toUpperCase(), to: "/tools/tracker" },
+		],
+	},
+	{
+		label: "Блог".toUpperCase(),
 		to: "/blog",
 		active: route.path.startsWith("/blog"),
 	},

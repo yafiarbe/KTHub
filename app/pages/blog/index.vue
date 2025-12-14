@@ -9,6 +9,8 @@ interface BlogPost {
 	soon?: boolean;
 }
 
+type BadgeColor = "success" | "info" | "warning" | "error" | "neutral" | "primary" | "secondary" | "zinc";
+
 const categories = [
 	{ key: "all", label: "Все статьи", icon: "mdi:view-grid" },
 	{ key: "beginner", label: "Для новичков", icon: "mdi:school" },
@@ -97,8 +99,8 @@ function getCategoryLabel(key: string): string {
 	return categories.find((c) => c.key === key)?.label || key;
 }
 
-function getCategoryColor(key: string): string {
-	const colors: Record<string, string> = {
+function getCategoryColor(key: string): BadgeColor {
+	const colors: Record<string, BadgeColor> = {
 		beginner: "success",
 		painting: "info",
 		hobby: "warning",

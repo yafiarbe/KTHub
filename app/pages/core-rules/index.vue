@@ -568,7 +568,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 						(укрытие или заслонение) для этой последовательности, когда его оперативник выбран в качестве допустимой цели.
 					</p>
 
-					<AppHeading :level="5" subtitle="roll attack dice" class="mt-7">3. Бросок кубиков атаки</AppHeading>
+					<AppHeading :level="5" subtitle="roll range attack dice" class="mt-7">3. Бросок кубиков атаки</AppHeading>
 					<p>
 						Атакующий бросает кубики атаки. Каждый результат, равный или превышающий характеристику <em>Попадание</em> оружия, считается успехом и сохраняется. Каждый результат ниже
 						&mdash; провал и отбрасывается. Каждый результат 6 &mdash; всегда критический успех. Каждый другой успех &mdash; обычный успех. Каждый результат 1 &mdash; всегда провал.
@@ -599,7 +599,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 						<li>Два обычных успеха могут блокировать критический успех.</li>
 						<li>Критический успех может блокировать обычный успех или критический успех.</li>
 					</ul>
-					<AppHeading :level="5" subtitle="resolve attack dice" class="mt-7">6. Распределение кубиков атаки</AppHeading>
+					<AppHeading :level="5" subtitle="resolve range attack dice" class="mt-7">6. Распределение кубиков атаки</AppHeading>
 
 					<p>Все успешные не заблокированные кубики атаки наносят урон цели.</p>
 					<ul>
@@ -641,7 +641,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 					</blockquote>
 					<AppHeading :level="5" subtitle="select weapons">2. Выбор оружия</AppHeading>
 					<p>Оба игрока выбирают одно оружие ближнего боя для своих оперативников и собирают кубики атаки — количество D6, равное характеристике «Атака» оружия.</p>
-					<AppHeading :level="5" subtitle="roll attack dice">3. Бросок кубиков атаки</AppHeading>
+					<AppHeading :level="5" subtitle="roll melee attack dice">3. Бросок кубиков атаки</AppHeading>
 					<p>
 						Оба игрока одновременно бросают кубики атаки. Каждый результат, равный или превышающий характеристику &laquo;Попадание&raquo; оружия, считается успехом и сохраняется. Каждый
 						результат ниже &mdash; провал и отбрасывается. Каждый результат 6 &mdash; всегда критический успех. Каждый другой успех &mdash; обычный успех. Каждый результат 1 &mdash; всегда
@@ -660,7 +660,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 							кубиков атаки.
 						</p>
 					</blockquote>
-					<AppHeading :level="5" subtitle="resolve attack dice">4. Распределение кубиков атаки</AppHeading>
+					<AppHeading :level="5" subtitle="resolve melee attack dice">4. Распределение кубиков атаки</AppHeading>
 					<p>
 						Начиная с атакующего, игроки по очереди распределяют один из своих успешных не заблокированных кубиков атаки. Этот процесс повторяется, пока один из игроков не распределит все
 						свои кубики (в этом случае противник распределяет все свои оставшиеся кубики) или оперативник в бою не будет выведен из строя (см. &laquo;Урон&raquo;). При распределении

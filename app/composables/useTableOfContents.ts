@@ -1,6 +1,7 @@
 export interface TocItem {
 	id: string;
 	text: string;
+	subtitle?: string;
 	level: number;
 }
 
@@ -28,11 +29,17 @@ export function useTableOfContents(options: UseTableOfContentsOptions = {}) {
 		const root = container.value || document;
 		const headings = root.querySelectorAll(selector);
 
-		items.value = Array.from(headings).map((heading) => ({
-			id: heading.id,
-			text: heading.textContent?.replace(/\s*\([^)]*\)\s*$/, "").trim() || "",
-			level: parseInt(heading.tagName.charAt(1), 10),
-		}));
+		items.value = Array.from(headings).map((heading) => {
+			const raw = heading.textContent || "";
+			const subtitleMatch = raw.match(/\(([^)]*)\)\s*$/);
+			const subtitle = subtitleMatch ? subtitleMatch[1].trim() : "";
+			return {
+				id: heading.id,
+				text: raw.replace(/\s*\([^)]*\)\s*$/, "").trim() || "",
+				subtitle,
+				level: parseInt(heading.tagName.charAt(1), 10),
+			};
+		});
 	}
 
 	/**

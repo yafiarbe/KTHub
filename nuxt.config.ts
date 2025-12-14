@@ -15,7 +15,7 @@ export default defineNuxtConfig({
 		},
 	},
 	image: {
-		provider: "ipxStatic",
+		provider: "ipx",
 		quality: 80,
 		format: ["webp"],
 	},
