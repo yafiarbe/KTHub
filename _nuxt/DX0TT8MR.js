@@ -1,0 +1,1 @@
+import{R as p,f as l,S as s,h as r,o as c,p as u,n as i}from"./BLXtSMj5.js";const m={base:"my-5 leading-7 text-pretty"},_={__name:"ProseP",props:{class:{type:null,required:!1}},setup(e){const a=e,t=p(),o=l(()=>s({extend:s(m),...t.ui?.prose?.p||{}}));return(n,f)=>(c(),r("p",{class:i(o.value({class:a.class}))},[u(n.$slots,"default")],2))}};export{_ as default};

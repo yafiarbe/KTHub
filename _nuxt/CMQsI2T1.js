@@ -1,0 +1,1 @@
+import{R as r,f as l,S as s,h as c,o as p,p as u,n as f}from"./BLXtSMj5.js";const i={base:""},g={__name:"ProseStrong",props:{class:{type:null,required:!1}},setup(e){const o=e,a=r(),t=l(()=>s({extend:s(i),...a.ui?.prose?.strong||{}}));return(n,m)=>(p(),c("strong",{class:f(t.value({class:o.class}))},[u(n.$slots,"default")],2))}};export{g as default};
