@@ -27,6 +27,11 @@ jobs:
             - name: Build
               run: npm run generate
 
+            - name: Fix SPA routing and disable Jekyll
+              run: |
+                  cp .output/public/index.html .output/public/404.html
+                  touch .output/public/.nojekyll
+
             - name: Deploy to gh-pages
               uses: peaceiris/actions-gh-pages@v4
               with:

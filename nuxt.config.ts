@@ -7,7 +7,6 @@ export default defineNuxtConfig({
 	router: {
 		options: {
 			scrollBehaviorType: "smooth",
-			hashMode: true,
 		},
 	},
 	ui: {
@@ -16,11 +15,12 @@ export default defineNuxtConfig({
 		},
 	},
 	image: {
+		provider: "ipxStatic",
 		quality: 80,
 		format: ["webp"],
 	},
 	ssr: false,
-	app: {
-		baseURL: "/KTHub/", // Replace REPO_NAME with your GitHub repository name, or '/' if it's a user/org pages repo
-	},
+	// app: {
+	// 	baseURL: "/KTHub/", // Replace REPO_NAME with your GitHub repository name, or '/' if it's a user/org pages repo
+	// },
 });
