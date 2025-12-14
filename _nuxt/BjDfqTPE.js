@@ -1,0 +1,1 @@
+import{Q as t,f as n,R as s,h as c,o as l,n as p}from"./C3sOpckD.js";const u={base:"border-t border-default my-12"},d={__name:"ProseHr",props:{class:{type:null,required:!1}},setup(e){const a=e,o=t(),r=n(()=>s({extend:s(u),...o.ui?.prose?.hr||{}}));return(m,f)=>(l(),c("hr",{class:p(r.value({class:a.class}))},null,2))}};export{d as default};
