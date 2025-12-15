@@ -31,8 +31,8 @@ const posts: BlogPost[] = [
 		soon: true,
 	},
 	{
-		title: "Выбор первой ударной команды",
-		description: "Обзор стартовых команд и советы по выбору фракции для начинающих игроков.",
+		title: "Выбор первого отряда",
+		description: "Обзор стартовых отрядов и советы по выбору фракции для начинающих игроков.",
 		icon: "mdi:account-group",
 		category: "beginner",
 		to: "/blog/choosing-first-team",

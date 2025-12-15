@@ -32,7 +32,7 @@ const items = computed<NavigationMenuItem[]>(() => [
 
 <template>
 	<UHeader title="KTHub">
-		<UNavigationMenu :items="items" class="uppercase" />
+		<UNavigationMenu :items="items" class="uppercase text-9xl!" />
 
 		<template #right>
 			<UColorModeButton />

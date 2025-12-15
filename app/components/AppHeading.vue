@@ -9,23 +9,39 @@ const props = withDefaults(defineProps<Props>(), {
 	subtitle: "",
 });
 
-const headingId = computed(() => {
-	if (props.subtitle) {
-		return slugify(props.subtitle);
-	}
-	return "";
-});
+// Счётчики для генерации уникальных id по слагу
+const slugCounts = ((globalThis as any).__app_heading_slug_counts ||= new Map<string, number>());
 
-function slugify(text: string): string {
+import { onBeforeUnmount } from "vue";
+
+const headingId = ref<string | null>(null);
+
+function makeSlug(text: string): string {
 	return text
 		.toString()
 		.toLowerCase()
 		.trim()
-		.replace(/\s+/g, "-") // Заменить пробелы на -
-		.replace(/[^\w\u0400-\u04FF-]+/g, "") // Удалить все кроме букв, цифр, кириллицы и -
-		.replace(/--+/g, "-") // Заменить множественные - на один -
-		.replace(/^-+/, "") // Удалить - в начале
-		.replace(/-+$/, ""); // Удалить - в конце
+		.replace(/\s+/g, "-")
+		.replace(/[^\w\u0400-\u04FF-]+/g, "")
+		.replace(/--+/g, "-")
+		.replace(/^-+/, "")
+		.replace(/-+$/, "");
+}
+
+if (props.subtitle) {
+	// Генерируем уникальный id на этапе установки компонента
+	const base = makeSlug(props.subtitle);
+	const prev = slugCounts.get(base) || 0;
+	const next = prev + 1;
+	slugCounts.set(base, next);
+	headingId.value = next === 1 ? base : `${base}-${next}`;
+
+	// при размонтировании можно уменьшить счётчик (необязательно, но аккуратно)
+	onBeforeUnmount(() => {
+		const cur = slugCounts.get(base) || 0;
+		if (cur <= 1) slugCounts.delete(base);
+		else slugCounts.set(base, cur - 1);
+	});
 }
 
 const tag = computed(() => `h${props.level}`);

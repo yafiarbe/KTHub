@@ -198,7 +198,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 							<NuxtPicture src="/images/core-rules/Conceal.png" format="webp" />
 						</div>
 						<p class="flex-1">
-							<strong>В УКРЫТИЕ:</strong> Оперативник не может выполнять действия «Стрельба» и «Натиск» и не может «Контратаковать». Однако он не является допустимой целью, пока
+							<strong>В УКРЫТИЕ:</strong> Оперативник не может выполнять действия «Стрельба» и «Наскок» и не может «Контратаковать». Однако он не является допустимой целью, пока
 							находится в укрытии.
 						</p>
 					</div>
@@ -352,7 +352,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 							'<p>Оперативник не может войти в зону контроля вражеского оперативника, если там нет других дружеских оперативников. Если же хотя бы один дружеский оперативник уже находится в зоне контроля этого врага, оперативник может войти в неё, но не может там остаться после завершения перемещения.</p>',
 						]"
 						:conditions="[
-							'Оперативник не может выполнять это действие, находясь в зоне контроля вражеского оперативника или в той же активации, в которой он выполнил действие «Отступление» или «Натиск».',
+							'Оперативник не может выполнять это действие, находясь в зоне контроля вражеского оперативника или в той же активации, в которой он выполнил действие «Отступление» или «Наскок».',
 						]"
 					/>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -390,7 +390,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 							'<p>То же, что действие <strong>&laquo;Перемещение&raquo;</strong>, но вместо характеристики <em>Движение</em> оперативник может переместиться только на 3 дюйма. Кроме того, он не может лазать во время этого перемещения, но может падать или прыгать.</p>',
 						]"
 						:conditions="[
-							'<p>Оперативник не может выполнять это действие, находясь в зоне контроля вражеского оперативника или в той же активации, в которой он выполнил действие <strong>&laquo;Натиск&raquo;</strong>.</p>',
+							'<p>Оперативник не может выполнять это действие, находясь в зоне контроля вражеского оперативника или в той же активации, в которой он выполнил действие <strong>&laquo;Наскок&raquo;</strong>.</p>',
 						]"
 					/>
 				</template>
@@ -415,7 +415,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 							'<p>То же, что действие <strong>&laquo;Перемещение&raquo;</strong>, но оперативник может перемещаться в зоне контроля вражеского оперативника, но не может завершить перемещение там.</p>',
 						]"
 						:conditions="[
-							'<p>Оперативник не может выполнять это действие, если в его зоне контроля нет вражеского оперативника. Он не может выполнять это действие в той же активации, в которой выполнил действия <strong>&laquo;Перемещение&raquo;</strong> или <strong>&laquo;Натиск&raquo;</strong>.</p>',
+							'<p>Оперативник не может выполнять это действие, если в его зоне контроля нет вражеского оперативника. Он не может выполнять это действие в той же активации, в которой выполнил действия <strong>&laquo;Перемещение&raquo;</strong> или <strong>&laquo;Наскок&raquo;</strong>.</p>',
 						]"
 					/>
 				</template>
@@ -425,7 +425,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 				<template #left>
 					<blockquote>
 						<p>
-							Действие <strong>&laquo;Натиск&raquo;</strong> позволяет оперативникам эффективно атаковать врагов, но, поскольку для этого требуется приказ <em>&laquo;В бой&raquo;</em>,
+							Действие <strong>&laquo;Наскок&raquo;</strong> позволяет оперативникам эффективно атаковать врагов, но, поскольку для этого требуется приказ <em>&laquo;В бой&raquo;</em>,
 							они становятся уязвимыми для вражеской стрельбы позже.
 						</p>
 					</blockquote>
@@ -433,7 +433,7 @@ const { items, activeId, scrollTo } = useTableOfContents();
 
 				<template #right>
 					<ActionCard
-						title="Натиск"
+						title="Наскок"
 						subtitle="Charge"
 						:ap="1"
 						:effects="[
@@ -697,10 +697,6 @@ const { items, activeId, scrollTo } = useTableOfContents();
 			<AppHeading :level="2" subtitle="Key Principles">Ключевые принципы</AppHeading>
 
 			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-
 				<template #right>
 					<AppHeading :level="3" subtitle="Bases">Базы</AppHeading>
 					<p>
@@ -743,153 +739,570 @@ const { items, activeId, scrollTo } = useTableOfContents();
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<blockquote>
+						<p>
+							Оперативник в укрытии с приказом «В укрытие» не является допустимой целью. Оперативник в укрытии с приказом «В бой» является допустимой целью, но имеет спасбросок за
+							укрытие (см. действие <a href="#shoot" class="text-primary">«Стрельба»</a>).
+						</p>
+					</blockquote>
 				</template>
 				<template #right>
 					<AppHeading :level="3" subtitle="Cover">Укрытие</AppHeading>
+					<p>
+						Укрытие определяется между двумя оперативниками, обычно когда один из них выполняет стрельбу. Оперативник находится в укрытии, если в пределах его зоны контроля есть
+						препятствующий ландшафт. Однако он не может находиться в укрытии, если другой оперативник находится в пределах 2 дюймов от него.
+						<a href="#intervening">Понятие препятствия объясняется здесь</a>.
+					</p>
+
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0S">
+							<NuxtPicture src="/images/core-rules/cover_1.png" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>В зоне контроля оперативника <strong>A</strong> есть препятствующий ландшафт, поэтому он находится в укрытии.</p>
+						</figcaption>
+					</figure>
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0">
+							<NuxtPicture src="/images/core-rules/cover_2.png" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>Есть препятствующий ландшафт, но он не находится в зоне контроля оперативника <strong>A</strong>, поэтому он не в укрытии.</p>
+						</figcaption>
+					</figure>
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0">
+							<NuxtPicture src="/images/core-rules/cover_3.png" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>В зоне контроля оперативника <strong>A</strong> есть ландшафт, но он не является препятствующим, поэтому оперативник не в укрытии.</p>
+						</figcaption>
+					</figure>
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0">
+							<NuxtPicture src="/images/core-rules/cover_2.png" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>
+								В зоне контроля оперативника <strong>A</strong> есть препятствующий ландшафт, но оперативник <strong>B</strong> находится в пределах 2 дюймов от оперативника
+								<strong>A</strong>, поэтому он не в укрытии.
+							</p>
+						</figcaption>
+					</figure>
 				</template>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<blockquote><p>Отслеживайте оставшееся здоровье каждого оперативника с помощью кубиков, жетонов или записывая значения.</p></blockquote>
+					<blockquote>
+						<p>Выведен из строя» и «удалён из зоны боя» — разные понятия. Некоторые правила срабатывают, когда оперативник выведен из строя, но до того, как он будет удалён.</p>
+					</blockquote>
 				</template>
 				<template #right>
 					<AppHeading :level="3" subtitle="Damage">Урон</AppHeading>
+
+					<p>
+						Когда оперативнику наносится урон, уменьшите его здоровье на соответствующее количество. Начальное количество здоровья оперативника определяется характеристикой «Здоровье» (см.
+						карточки данных). Если здоровье оперативника уменьшается до 0 или ниже, он считается выведенным из строя и удаляется из зоны боя. Некоторые правила позволяют выведенному из
+						строя оперативнику выполнить свободное действие перед удалением из зоны боя. Такой оперативник не может выполнить более одного свободного действия (за исключением действия
+						«Установить маркер») в этом случае, и игрок, контролирующий этого оперативника, определяет порядок выполнения любых его правил, которые срабатывают до удаления из зоны боя
+						(приоритет над игроком с инициативой).
+					</p>
+
+					<p>
+						Пока у оперативника остаётся меньше здоровья, чем его начальное значение, он считается раненым. Если у него осталось меньше половины начального здоровья, он также считается
+						тяжело раненым.
+					</p>
+					<AppHeading :level="4" subtitle="Injured">Тяжёлое ранение</AppHeading>
+					<p><strong>У тяжело раненых оперативников уменьшите характеристику «Движение» на 2 дюйма и ухудшите характеристику «Попадание» их оружия на 1.</strong></p>
 				</template>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<blockquote><p>Если у оперативника APL равен 2, и два правила добавляют по 1 к его APL, итоговый APL будет равен 3.</p></blockquote>
+					<blockquote>
+						<p>
+							Если характеристики оперативника или характеристики его оружия изменяются во время выполнения действия, примените изменение после завершения действия. Обратите внимание,
+							что изменения правил оружия применяются немедленно.
+						</p>
+					</blockquote>
+					<blockquote>
+						<p>
+							Обратите внимание, что более высокое значение характеристик "Попадание" и "Спасбросок" хуже, так как вероятность успешного броска уменьшается. Это важно, если правило
+							требует улучшить или ухудшить такую характеристику. Например, характеристика "Попадание" 4+, ухудшенная на 1, становится 5+.
+						</p>
+					</blockquote>
 				</template>
 				<template #right>
-					<AppHeading :level="4" subtitle="Injured">Тяжёлое ранение</AppHeading>
+					<AppHeading :level="3" subtitle="Datacards">Карточки данных</AppHeading>
+					<div class="w-full shrink-0 flex justify-center">
+						<NuxtPicture src="/images/core-rules/example_datacard.jpg" format="webp" class="block mx-auto h-auto" />
+					</div>
+
+					<AppHeading :level="4" subtitle="Type of operative">1. Тип оперативника.</AppHeading>
+					<AppHeading :level="4" subtitle="Operative stats">2. Характеристики оперативника:</AppHeading>
+					<ul>
+						<li>
+							<strong>Лимит очков действий (APL):</strong> Общее количество очков действий, которое оперативник может использовать во время своей активации, а также характеристика,
+							используемая для определения контроля над маркерами. Некоторые редкие правила могут изменять APL оперативника. Независимо от количества изменений APL, общее значение не
+							может превышать +1 или -1 от его нормального APL. Это имеет приоритет над всеми изменениями характеристик.
+						</li>
+						<li>
+							<strong>Движение (MOVE):</strong> Дистанция передвижения оперативника, используемая при выполнении действий <strong>"Перемещение"</strong>, <strong>"Отступление"</strong> и
+							<strong>"Натиск"</strong>. Характеристика "Движение" оперативника не может быть снижена менее чем до 4 дюймов. Это имеет приоритет над всеми изменениями характеристик.
+						</li>
+						<li><strong>Спасбросок (SAVE):</strong> Результат, необходимый для успешного броска кубиков защиты, когда другой оперативник стреляет по данному оперативнику.</li>
+						<li><strong>Раны (WOUNDS):</strong> Начальное количество ран оперативника, которое уменьшается по мере нанесения урона.</li>
+					</ul>
+					<AppHeading :level="4" subtitle="Weapon stats">3. Характеристики оружия:</AppHeading>
+					<p>
+						Страницы выбора ударной команды в правилах вашей ударной команды указывают, какое оружие имеет оперативник. Если это не указано, оперативник обладает всем оружием, указанным в
+						его карточке данных.
+					</p>
+					<ul>
+						<li>
+							<p>Тип оружия &ndash; стрелковое или ближнего боя.</p>
+						</li>
+						<li>
+							<p><strong>Атака (ATK):</strong> Количество кубиков атаки, которое нужно бросить, когда оперативник использует это оружие.</p>
+						</li>
+						<li>
+							<p><strong>Попадание (HIT):</strong> Результат, необходимый для успешного броска кубиков атаки, когда оперативник использует это оружие.</p>
+						</li>
+						<li>
+							<p>
+								<strong>Урон (DMG):</strong> Урон, наносимый каждым кубиком атаки при использовании этого оружия. Первое значение &mdash; это характеристика "Обычный урон" (урон от
+								обычного успеха), второе значение &mdash; характеристика "Критический урон" (урон от критического успеха).
+							</p>
+						</li>
+						<li>
+							<p>
+								Иногда разные виды оружия имеют одинаковое основное название, но разные второстепенные названия, указанные в скобках, например, "плазменная пушка (стандарт)" и
+								"плазменная пушка (сверхзаряд)". Это фактически отдельные профили одного и того же оружия, но используемые как разные виды оружия. Если правило ссылается только на
+								основное название, оно включает все виды оружия с этим основным названием.
+							</p>
+						</li>
+					</ul>
+					<AppHeading :level="4" subtitle="Weapon rules">4. Правила оружия:</AppHeading>
+					<ul>
+						<li>Дополнительные правила, применяемые, когда оперативник использует это оружие, объяснены здесь.</li>
+					</ul>
+					<AppHeading :level="4" subtitle="Additional rules">5. Дополнительные правила:</AppHeading>
+					<ul>
+						<li>Дополнительные правила, которые имеет оперативник.</li>
+						<li>Уникальные действия, которые может выполнять этот оперативник.</li>
+					</ul>
+					<AppHeading :level="4" subtitle="Keywords">6. Ключевые слова:</AppHeading>
+					<ul>
+						<li>- Используются для идентификации оперативника в правилах — некоторые правила действуют только на оперативников с соответствующими ключевыми словами.</li>
+						<li>- Указаны шрифтом КЛЮЧЕВОЕ СЛОВО.</li>
+						<li>
+							- Ключевые слова, выделенные оранжевым цветом с символом черепа, например,
+							<span class="text-orange-500 font-bold">TEMPESTUS AQUILON <Icon name="mdi:skull" class="align-middle" /> </span>, являются фракционными ключевыми словами — используются для
+							идентификации всех оперативников данной ударной команды.
+						</li>
+					</ul>
+					<AppHeading :level="4" subtitle="Base size in mm">7. Размер базы в мм.</AppHeading>
 				</template>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<blockquote>
+						<p>Например, если требуется 4+, результат кубика 4, 5 или 6 удовлетворяет условию, а если требуется 1–4, то результат кубика 1, 2, 3 или 4 удовлетворяет условию.</p>
+					</blockquote>
 				</template>
-				<template #right><AppHeading :level="3" subtitle="Datacards">Карточки данных</AppHeading> </template>
+				<template #right
+					><AppHeading :level="3" subtitle="Dice">Кубики</AppHeading>
+					<p>
+						Используйте шестигранные кубики (D6) для определения исхода различных правил. Часто требуется результат x+, где x — минимально допустимое значение, например, 3+. Иногда
+						требуется результат в определённом диапазоне, например, 1–3. Некоторые редкие правила требуют броска D3: для этого бросьте один D6 и разделите результат пополам (округляя
+						вверх). Некоторые правила требуют броска xD6 или xD3 (например, 2D6 или 3D3): бросьте указанное количество кубиков и сложите результаты. Также могут быть правила вида D6+x или
+						D3+x (например, D6+2 или D3+3): бросьте соответствующий кубик и добавьте к результату x.
+					</p>
+					<p>
+						Некоторые правила позволяют перебросить кубик. Нельзя перебрасывать кубик более одного раза, а также нельзя выбрать исходный результат, даже если новый результат хуже. Если это
+						кубики атаки или защиты, переброс можно выполнять в любом порядке, включая возможность увидеть результат одного переброса перед принятием решения о следующем. Если несколько
+						игроков могут перебросить кубики одновременно (например, во время действия "Рукопашный бой"), они поочерёдно либо перебрасывают кубик, либо пасуют, пока оба не пасуют подряд,
+						начиная с игрока с инициативой (это имеет приоритет над правилами жеребьёвки, которые происходят одновременно, стр. 37).
+					</p></template
+				>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<blockquote>
+						<p>Оперативники, находящиеся в пределах определённого расстояния от оперативника, несущего маркер, также находятся в пределах того же расстояния от этого маркера.</p>
+					</blockquote>
 				</template>
-				<template #right><AppHeading :level="3" subtitle="Dice">Кубики</AppHeading> </template>
+				<template #right>
+					<AppHeading :level="3" subtitle="Distances">Расстояния</AppHeading>
+					<p>
+						Различные правила требуют соблюдения расстояния в дюймах. При измерении расстояния до или от объекта измеряйте от ближайшей его части. Для оперативника измерение проводится от
+						его базы, игнорируя все остальные части миниатюры. При измерении до или от области зоны боя учитывайте только горизонтальное расстояние (иными словами, смотрите сверху,
+						игнорируя вертикальное расстояние).
+					</p>
+					<p>
+						Если правило требует, чтобы объект находился «в пределах» определённого расстояния, условие выполняется, если хотя бы часть объекта находится на этом расстоянии или ближе. Для
+						условия «полностью в пределах» расстояния каждая часть объекта должна находиться на этом расстоянии или ближе. Оперативник всегда считается находящимся «в пределах» и
+						«полностью в пределах» расстояния до самого себя и маркера, который он несёт. Если оперативник несёт миссионный или целевой маркер, этот маркер находится на том же расстоянии,
+						что и оперативник.
+					</p>
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0">
+							<NuxtPicture src="/images/core-rules/distances.jpg" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>
+								Оперативник <strong>B</strong> находится в пределах 2" от оперативника <strong>A</strong>. Целевой маркер находится в пределах 2" от оперативника <strong>A</strong>.
+								Оперативник <strong>C</strong> находится полностью в пределах 2" от оперативника <strong>A</strong>.
+							</p>
+						</figcaption>
+					</figure>
+				</template>
+			</TwoColumnLayout>
+
+			<TwoColumnLayout>
+				<template #right>
+					<AppHeading :level="3" subtitle="Equipment">Снаряжение</AppHeading>
+					<p>Снаряжение — это дополнительные правила, которые можно выбрать перед битвой, как указано в последовательности игры (например здесь).</p>
+					<p>Универсальное снаряжение доступно для любой ударной команды, тогда как фракционное снаряжение специфично для определённой фракции.</p>
+					<p>Каждый игрок не может выбрать одну и ту же опцию снаряжения более одного раза за игру.</p>
+				</template>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<blockquote>
+						<p>
+							Игрок оперативника решает, от какой точки базы проводить линии прицеливания. Это может позволить оперативнику выбрать более выгодный угол — представьте, что оперативник
+							наклоняется вправо или влево, как это уместно.
+						</p>
+					</blockquote>
+					<blockquote>
+						<p>
+							Препятствие обычно определяется от одного оперативника к другому, но некоторые редкие правила могут требовать определения препятствия относительно других объектов, таких
+							как маркеры. В таких случаях все части этого объекта считаются «базой» при определении препятствия.
+						</p>
+					</blockquote>
 				</template>
-				<template #right> <AppHeading :level="3" subtitle="Distances">Расстояния</AppHeading></template>
+				<template #right>
+					<AppHeading :level="3" subtitle="Intervening">Препятствие</AppHeading>
+					<p>
+						Правила, такие как укрытие и заслонение, требуют определения, является ли что-либо препятствием, например, ландшафт. В большинстве случаев это легко определить — если объект
+						находится между оперативником и предполагаемой целью, он считается препятствием. Иногда это может быть неочевидно, поэтому используются линии прицеливания.
+					</p>
+					<p>
+						Для использования линий прицеливания игрок, контролирующий оперативника, проводит воображаемые прямые линии диаметром 1 мм от любой точки базы оперативника ко всем видимым
+						частям базы предполагаемой цели. Всё, что пересекает хотя бы одна из этих линий, считается препятствием. Всё, что пересекают все эти линии, считается полностью препятствующим.
+					</p>
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0S">
+							<NuxtPicture src="/images/core-rules/intervening_1.png" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>Линии прицеливания пересекают ландшафт, поэтому он является препятствием.</p>
+						</figcaption>
+					</figure>
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0S">
+							<NuxtPicture src="/images/core-rules/intervening_2.png" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>Из-за того, как игрок оперативника A решил провести линии прицеливания, ландшафт не является препятствием.</p>
+						</figcaption>
+					</figure>
+					<p>
+						Чаще всего линии прицеливания можно проводить в двумерной плоскости (вид сверху) для удобства. Однако, если между оперативниками есть разница в высоте (например, один из них
+						находится на ландшафте типа "Высота"), линии прицеливания следует проводить в трёхмерной плоскости.
+					</p>
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0S">
+							<NuxtPicture src="/images/core-rules/intervening_3.jpg" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>Ни одна из этих линий прицеливания не пересекает элемент ландшафта A, поэтому он не является препятствием.</p>
+						</figcaption>
+					</figure>
+				</template>
+			</TwoColumnLayout>
+
+			<TwoColumnLayout>
+				<template #right
+					><AppHeading :level="3" subtitle="Keywords">Ключевые слова</AppHeading>
+
+					<p>
+						Ключевые слова — это способ идентификации определённых правил. Чаще всего ключевые слова используются для оперативников (см. карточки данных ) — некоторые правила затрагивают
+						только оперативников с соответствующими ключевыми словами.
+					</p>
+					<p>
+						Некоторые редкие правила также имеют ключевые слова, например, <strong>ПОДДЕРЖКА</strong> или <strong>СТРАТЕГИЧЕСКИЙ МАНЁВР</strong>. Сами по себе эти ключевые слова ничего не
+						означают, но другие правила взаимодействуют с ними. Ключевые слова выделяются <strong>ЖИРНЫМ ШРИФТОМ КЛЮЧЕВОГО СЛОВА</strong>. Те, что выделены оранжевым цветом с символом
+						черепа, например, <span class="text-orange-500 font-bold">TEMPESTUS AQUILON <Icon name="mdi:skull" class="align-middle" /> </span>, являются фракционными ключевыми словами,
+						используемыми для идентификации всех оперативников/правил данной ударной команды.
+					</p>
+				</template>
+			</TwoColumnLayout>
+
+			<TwoColumnLayout>
+				<template #right
+					><AppHeading :level="3" subtitle="Killzone Floor">Пол зоны боя</AppHeading>
+					<p>
+						Пол зоны боя — это поверхность зоны боя (т.е. игровая доска). Всё, что находится на маркере, расположенном на полу зоны боя, также считается находящимся на полу зоны боя.
+					</p></template
+				>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<blockquote>
+						<figure class="m-0 flex flex-col items-center justify-center">
+							<div class="w-full shrink-0S">
+								<NuxtPicture src="/images/core-rules/kt__0001_objective_marker_example.png" format="webp" class="w-full h-auto" />
+							</div>
+							<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+								<p>Маркеры целей — наиболее распространённые маркеры, представляющие ключевые точки в зоне боя. Контроль над ними часто необходим для достижения победы.</p>
+							</figcaption>
+						</figure>
+					</blockquote>
+					<blockquote>
+						<figure class="m-0 flex flex-col items-center justify-center">
+							<div class="w-full shrink-0S">
+								<NuxtPicture src="/images/core-rules/kt__0000_represent_a_marker.png" format="webp" class="w-full h-auto" />
+							</div>
+							<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+								<p>
+									Допустимо использовать миниатюру для представления маркера, но имейте под рукой стандартный маркер, если это вызывает проблемы с правилами (например, миниатюра
+									слишком большая).
+								</p>
+							</figcaption>
+						</figure>
+					</blockquote>
 				</template>
-				<template #right> <AppHeading :level="3" subtitle="Equipment">Снаряжение</AppHeading></template>
+				<template #right>
+					<AppHeading :level="3" subtitle="Markers">Маркеры</AppHeading>
+					<p>
+						Маркеры размещаются в строго определённых местах — это должно быть место, где их можно установить, и они оказывают влияние на игру и оперативников вокруг. Маркеры могут быть
+						размещены под оперативниками (временно уберите оперативников для этого), а оперативники могут быть размещены на маркерах. Маркеры целей имеют диаметр 40 мм. Все остальные
+						маркеры имеют диаметр 20 мм. Некоторые маркеры называются миссионными маркерами. Само по себе это ничего не означает, но с ними взаимодействуют другие правила.
+					</p>
+					<p>
+						Оперативники оспаривают маркеры в пределах своей зоны контроля. Дружественные оперативники контролируют маркер, если суммарный лимит очков действий (APL) тех, кто его
+						оспаривает, превышает суммарный APL вражеских оперативников, но контроль не может измениться во время выполнения действия. Пока оперативник несёт маркер (см. действие «Поднять
+						маркер» ), он оспаривает и контролирует этот маркер и является единственным оперативником, который может это делать.
+					</p>
+
+					<figure class="m-0 flex flex-col items-center justify-center">
+						<div class="w-full shrink-0S">
+							<NuxtPicture src="/images/core-rules/marker_place_example.jpg" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-0 flex-1">
+							<p>
+								В приведённом выше примере только три оперативника оспаривают маркер цели, так как он находится вне зоны контроля оранжевого оперативника слева (элемент ландшафта
+								препятствует видимости). Суммарный APL оранжевых оперативников, оспаривающих маркер цели, равен 2, тогда как суммарный APL белых оперативников, оспаривающих его, равен
+								4, поэтому маркер контролируют белые оперативники.
+							</p>
+						</figcaption>
+					</figure>
+				</template>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<div class="flex flex-col justify-between h-full">
+						<blockquote>
+							<p>
+								Заслонение происходит, когда оперативник является допустимой целью, но препятствия (обычно ландшафт) делают его менее эффективной целью. Представьте, что оперативнику
+								приходится целиться во врага через руины или дальнее окно.
+							</p>
+						</blockquote>
+						<blockquote>
+							<p>
+								Другими словами, нахождение оперативника в пределах 1 дюйма от элемента ландшафта не предотвращает заслонение этим элементом, за исключением той части ландшафта,
+								которая находится в пределах 1 дюйма от оперативника.
+							</p>
+						</blockquote>
+					</div>
 				</template>
-				<template #right> <AppHeading :level="3" subtitle="Intervening">Препятствие</AppHeading></template>
+				<template #right>
+					<AppHeading :level="3" subtitle="Obscured">Заслонение</AppHeading>
+					<p>
+						Заслонение определяется между одним оперативником и другим, обычно когда один из них выполняет стрельбу. Оперативник считается заслонённым, если между ними находится
+						препятствующий тяжёлый ландшафт. Однако заслонение не происходит, если препятствующий тяжёлый ландшафт находится в пределах 1 дюйма от любого из оперативников. Подробности о
+						препятствиях описаны здесь.
+					</p>
+					<ul>
+						<p>Когда оперативник выполняет стрельбу, если цель заслонена:</p>
+						<li>Атакующий должен сбросить один успех по своему выбору вместо того, чтобы сохранить его.</li>
+						<li>Все критические успехи атакующего сохраняются как обычные успехи и не могут быть преобразованы в критические успехи (это имеет приоритет над всеми другими правилами).</li>
+					</ul>
+
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0">
+							<NuxtPicture src="/images/core-rules/obscured_1.jpg" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>
+								Оперативник <strong>B</strong> виден оперативнику <strong>A</strong> через окно. Однако между ними находится препятствующий тяжёлый ландшафт, расположенный далее 1
+								дюйма от обоих оперативников, поэтому оперативник <strong>B</strong> заслонён.
+							</p>
+						</figcaption>
+					</figure>
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0">
+							<NuxtPicture src="/images/core-rules/obscured_2.jpg" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>
+								Между оперативниками находится препятствующий тяжёлый ландшафт, но он расположен в пределах 1 дюйма от оперативника <strong>A</strong>, поэтому оперативник
+								<strong>B</strong> не заслонён.
+							</p>
+						</figcaption>
+					</figure>
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0">
+							<NuxtPicture src="/images/core-rules/obscured_3.jpg" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p>
+								Между оперативниками находится препятствующий тяжёлый ландшафт, часть которого находится в пределах 1 дюйма, а часть — за его пределами. Поскольку часть ландшафта
+								находится вне 1 дюйма, оперативник <strong>B</strong> заслонён.
+							</p>
+						</figcaption>
+					</figure>
+				</template>
+			</TwoColumnLayout>
+
+			<TwoColumnLayout>
+				<template #right
+					><AppHeading :level="3" subtitle="Operatives">Оперативники</AppHeading>
+					<p>Оперативники — это миниатюры Citadel, используемые в игре.</p>
+					<p>Ваши оперативники являются дружественными оперативниками, а оперативники вашего противника — вражескими оперативниками.</p>
+				</template>
+			</TwoColumnLayout>
+
+			<TwoColumnLayout>
+				<template #right>
+					<AppHeading :level="3" subtitle="Orders">Приказы</AppHeading>
+
+					<figure class="m-0 flex flex-col lg:flex-row items-center justify-center lg:gap-5">
+						<div class="w-full lg:w-1/2 shrink-0">
+							<NuxtPicture src="/images/core-rules/orders.jpg" format="webp" class="w-full h-auto" />
+						</div>
+						<figcaption class="text-sm mt-2 lg:mt-0 flex-1">
+							<p><strong>Приказ "В бой":</strong> Оперативник может выполнять действия как обычно и может выполнять контратаку.</p>
+							<p>
+								<strong>Приказ "В укрытие":</strong> Оперативник не может выполнять действия «Стрельба» и «Натиск» и не может выполнять контратаку. Однако он не является допустимой
+								целью, пока находится в укрытии.
+							</p>
+						</figcaption>
+					</figure>
+					<p>Оперативники получают приказ «В укрытие» при их размещении перед началом битвы. Вы можете изменить приказ оперативника каждый раз, когда он активируется.</p>
+					<p>
+						Жетоны приказов имеют две стороны. Светлая сторона показывает, что оперативник находится в состоянии готовности (он может быть активирован в фазе боя), а тёмная сторона
+						показывает, что оперативник истощён (он уже был активирован в фазе боя).
+					</p></template
+				>
+			</TwoColumnLayout>
+
+			<TwoColumnLayout>
+				<template #right
+					><AppHeading :level="3" subtitle="Ploys">Хитрости</AppHeading>
+					<p>
+						Игроки могут тратить очки командования (CP) на хитрости, чтобы получить бонусы по правилам в подходящий момент. Если не указано иное, все хитрости стоят 1 CP. Существует два
+						типа хитростей:
+					</p>
+					<ul>
+						<li>
+							Каждая <strong>стратегическая хитрость</strong> является стратегическим манёвром (используется в фазе стратегии). Некоторые применяют правила, которые разрешаются
+							«немедленно», в противном случае они применяют правила, действующие до конца хода игры.
+						</li>
+						<li><strong>Боевые хитрости</strong> используются в фазе боя и применяют правила в соответствии с описанием хитрости.</li>
+					</ul>
+					<p>
+						Все игроки имеют доступ к боевой хитрости «Командный переброс», описанной ниже, а также к хитростям, указанным в правилах их ударной команды. За исключением «Командного
+						переброса», каждый игрок не может использовать одну и ту же хитрость более одного раза за ход игры.
+					</p>
+					<ActionCard
+						title="Командный переброс"
+						subtitle="Command re-roll"
+						:level="4"
+						:ap="1"
+						:effects="['<p>Используйте эту боевую хитрость после броска кубиков атаки или защиты.</p><p>Вы можете перебросить один из этих кубиков.</p>']"
+				/></template>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<blockquote>
+						<p>
+							Если на карточке данных указано: «этот оперативник может выполнить два действия "Стрельба" во время своей активации», это имеет приоритет над основными правилами
+							ограничений на действия (Ограничения на действия описаны здесь), согласно пункту 3 приоритета.
+						</p>
+					</blockquote>
 				</template>
-				<template #right><AppHeading :level="3" subtitle="Keywords">Ключевые слова</AppHeading> </template>
+				<template #right>
+					<AppHeading :level="3" subtitle="Precedence">Приоритет</AppHeading>
+					<p>
+						Некоторые редкие правила могут вступать в конфликт друг с другом, поэтому необходимо установить, какое из них имеет приоритет. В порядке приоритета правило имеет преимущество,
+						если:
+					</p>
+					<ol>
+						<li>Это прямо указано в правиле.</li>
+						<li>Это указано в комментариях дизайнера, опубликованных онлайн.</li>
+						<li>Правило не содержится в основной книге правил (т.е. другие правила имеют приоритет над правилами основной книги).</li>
+						<li>Правило содержит формулировку «не может».</li>
+						<li>Игрок с инициативой принимает решение.</li>
+					</ol>
+				</template>
+			</TwoColumnLayout>
+
+			<TwoColumnLayout>
+				<template #right>
+					<AppHeading :level="3" subtitle="Roll-off">Жеребьёвка</AppHeading>
+					<p>Если правило требует жеребьёвки, оба игрока бросают один шестигранный кубик (D6), и побеждает тот, у кого выпало наибольшее значение.</p>
+					<p>В случае ничьей проводится повторная жеребьёвка.</p>
+				</template>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
+					<blockquote><p>Жетоны приказов являются наиболее распространёнными жетонами, они показывают приказ оперативника и его состояние — готов или истощён.</p></blockquote>
 				</template>
-				<template #right><AppHeading :level="3" subtitle="Killzone Floor">Пол зоны боя</AppHeading> </template>
+				<template #right
+					><AppHeading :level="3" subtitle="Tokens">Жетоны</AppHeading>
+
+					<div class="w-full lg:w-1/2 shrink-0">
+						<NuxtPicture src="/images/core-rules/tokens_set.jpg" format="webp" class="w-full h-auto" />
+					</div>
+
+					<p>Жетоны используются для отслеживания эффектов правил.</p>
+					<p>Они обычно размещаются рядом с соответствующим оперативником, но могут быть перемещены, чтобы освободить место для других оперативников и маркеров, если это необходимо.</p>
+					<p>Жетоны убираются, когда отслеживаемый эффект правила прекращается.</p>
+				</template>
+			</TwoColumnLayout>
+
+			<TwoColumnLayout>
+				<template #right
+					><AppHeading :level="3" subtitle="Valid Target">Допустимая цель</AppHeading>
+
+					<p>
+						Некоторые правила требуют выбора допустимой цели для оперативника. Это наиболее распространено, когда оперативник выполняет стрельбу, но некоторые редкие правила также могут
+						это требовать.
+					</p>
+
+					<ul>
+						<li>Если предполагаемая цель имеет приказ <strong>«В бой»</strong>, она является допустимой целью, если она видима для оперативника.</li>
+						<li>Если предполагаемая цель имеет приказ <strong>«В укрытие»</strong>, она является допустимой целью, если она видима для оперативника и не находится в укрытии.</li>
+					</ul>
+				</template>
 			</TwoColumnLayout>
 
 			<TwoColumnLayout>
 				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right> <AppHeading :level="3" subtitle="Markers">Маркеры</AppHeading></template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right> <AppHeading :level="3" subtitle="Obscured">Заслонение</AppHeading></template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right><AppHeading :level="3" subtitle="Operatives">Оперативники</AppHeading> </template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right> <AppHeading :level="3" subtitle="Orders">Приказы</AppHeading></template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right><AppHeading :level="3" subtitle="Ploys">Хитрости</AppHeading> </template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right> <AppHeading :level="4" subtitle="Command re-roll">Командный переброс</AppHeading></template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right> <AppHeading :level="3" subtitle="Precedence">Приоритет</AppHeading></template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right> <AppHeading :level="3" subtitle="Roll-off">Жеребьёвка</AppHeading></template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right><AppHeading :level="3" subtitle="Tokens">Жетоны</AppHeading> </template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
-				</template>
-				<template #right><AppHeading :level="3" subtitle="Valid Target">Допустимая цель</AppHeading> </template>
-			</TwoColumnLayout>
-
-			<TwoColumnLayout>
-				<template #left>
-					<blockquote></blockquote>
+					<blockquote><p></p></blockquote>
 				</template>
 				<template #right> <AppHeading :level="3" subtitle="Visible">Видимость</AppHeading></template>
 			</TwoColumnLayout>
@@ -934,6 +1347,8 @@ const { items, activeId, scrollTo } = useTableOfContents();
 			<!--  -->
 			<AppHeading :level="3" subtitle="Setting Up Killzones">Подготовка Killzone</AppHeading>
 		</article>
+		<USeparator type="dashed" class="h-px" />
+		<AppFooter />
 		<TableOfContents :items="items" :active-id="activeId" @navigate="scrollTo" />
 	</UContainer>
 </template>

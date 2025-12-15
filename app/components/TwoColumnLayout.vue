@@ -13,7 +13,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-	<div class="grid grid-cols-1 gap-4 my-6" :style="{ '--left-width': leftWidth, '--right-width': rightWidth }">
+	<div class="grid grid-cols-1 gap-4 my-12 " :style="{ '--left-width': leftWidth, '--right-width': rightWidth }">
 		<!-- Левая колонка (комментарии) - на мобильных снизу (если reverseOnMobile), на десктопе слева -->
 		<aside
 			class="prose prose-sm dark:prose-invert max-w-none prose-blockquote:border-primary prose-blockquote:font-extralight prose-blockquote:italic prose-blockquote:text-primary lg:order-1!"
