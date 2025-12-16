@@ -3,10 +3,15 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-	--font-sans: "Roboto", sans-serif;
+	--font-sans: "Source Sans 3", system-ui, sans-serif;
+	--font-heading: "Cinzel", "Times New Roman", serif;
+	--font-body: "Source Sans 3", system-ui, sans-serif;
+	--font-notes: "EB Garamond", "Times New Roman", serif;
 }
 
 :root {
+	/* Шрифты */
+
 	--ui-footer-min-height: 80px; /* или ваша высота футера */
 
 	--ui-bg: white;
@@ -38,6 +43,10 @@ html {
 	scrollbar-gutter: stable;
 }
 
+body {
+	font-family: var(--font-body);
+}
+
 /* Отступ для якорных ссылок (чтобы заголовок не прилипал к верху) */
 [id] {
 	scroll-margin-top: 80px;
@@ -46,4 +55,14 @@ html {
 /* Цвет primary для заголовков в prose */
 .prose :where(h1, h2, h3, h4, h5, h6):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
 	color: var(--ui-primary);
+}
+
+.heading-font {
+	font-family: var(--font-heading);
+	letter-spacing: 0.08em;
+}
+
+.author-note {
+	font-family: var(--font-notes);
+	font-style: italic;
 }

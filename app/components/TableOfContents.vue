@@ -271,10 +271,10 @@ onUnmounted(() => {
 		>
 			<div
 				v-if="isOpen"
-				class="fixed right-0 md:right-6 bottom-0 md:bottom-1/12 w-4/6 md:w-80 z-50 rounded-tl-2xl rounded-bl-2xl md: rounded-2xl toc-panel overflow-y-auto overscroll-contain bg-zinc-800 border-l-6 md:border-r-6 border-primary shadow-xl"
+				class="fixed right-0 md:right-6 bottom-0 md:bottom-1/12 w-4/6 md:w-80 z-50 rounded-tl-2xl rounded-bl-2xl md: rounded-2xl toc-panel overflow-y-auto overscroll-contain bg-zinc-100 dark:bg-zinc-800 border-l-6 md:border-r-6 border-primary shadow-xl"
 				:style="panelStyle"
 			>
-				<div class="sticky top-0 bg-zinc-800 border-b border-default px-4 py-3 z-10">
+				<div class="sticky top-0 bg-zinc-100 dark:bg-zinc-800 border-b border-default px-4 py-3 z-10">
 					<h3 class="font-semibold text-sm text-default">Содержание</h3>
 					<div class="mt-3 flex items-center gap-2">
 						<Icon name="heroicons:magnifying-glass" class="size-4 text-muted" />
@@ -283,7 +283,7 @@ onUnmounted(() => {
 							v-model="search"
 							type="search"
 							placeholder="Поиск по содержанию"
-							class="w-full rounded-sm px-3 py-2 bg-zinc-900/20 border-2 border-primary/20 text-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20"
+							class="w-full rounded-sm px-3 py-2 bg-zinc-100 dark:bg-zinc-900/20 border-2 border-primary/20 text-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20"
 							@focus="onInputFocus"
 							@blur="onInputBlur"
 						/>

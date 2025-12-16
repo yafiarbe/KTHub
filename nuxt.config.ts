@@ -20,7 +20,19 @@ export default defineNuxtConfig({
 		format: ["webp"],
 	},
 	ssr: false,
+	fonts: {
+		families: [
+			/* Заголовок */
+			{ name: "Cinzel", provider: "google", weights: [500, 700] },
+			/* Основной текст */
+			{ name: "Source Sans 3", provider: "google", weights: [400, 500, 600] },
+			/* Примечания авторов */
+			{ name: "EB Garamond", provider: "google", weights: [400, 500, 600] },
+			{ name: "IBM Plex Serif", provider: "google", weights: [400, 500, 600] },
+			{ name: "Cormorant Garamond", provider: "google", weights: [400, 500, 600] },
+		],
+	},
 	app: {
-		// baseURL: "/KTHub/",
+		baseURL: "/KTHub/",
 	},
 });
