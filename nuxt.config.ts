@@ -33,6 +33,6 @@ export default defineNuxtConfig({
 		],
 	},
 	app: {
-		baseURL: "/KTHub/",
+		// baseURL: "/KTHub/",
 	},
 });
